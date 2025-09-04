@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:12:38 by macoulib          #+#    #+#             */
-/*   Updated: 2025/09/04 13:43:15 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/09/04 21:36:03 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ int	init_philo(t_data *data)
 		data->philosophers[i].meals_eaten = 0;
 		data->philosophers[i].last_meal_time = data->simulation_start_time;
 		data->philosophers[i].shared_data = data;
-		pthread_mutex_init(&data->philosophers[i].meal_time_lock, NULL);
+		if(pthread_mutex_init(&data->philosophers[i].meal_time_lock, NULL) != 0)
+			return (0);
 		take_fork(&data->philosophers[i]);
 		i++;
 	}

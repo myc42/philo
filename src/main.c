@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:12:41 by macoulib          #+#    #+#             */
-/*   Updated: 2025/09/04 20:19:06 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/09/04 21:20:11 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	create_thread(t_data *data)
 	int i;
 
 	i = 0;
-	data->simulation_start_time = get_time_ms();
 	while (i < data->total_philosophers)
 	{
 		if (pthread_create(&data->philosophers[i].thread, NULL, philo_routine,
@@ -43,11 +42,9 @@ int	create_thread(t_data *data)
 			return (1);
 		i++;
 	}
-	
 	if (pthread_create(&data->monitor_thread, NULL, monitor_routine, data) != 0)
 		return (1);
 	i = 0;
-
 	while (i < data->total_philosophers)
 	{
 		pthread_join(data->philosophers[i].thread, NULL);
