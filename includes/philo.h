@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:12:32 by macoulib          #+#    #+#             */
-/*   Updated: 2025/09/04 13:36:00 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/09/04 15:56:57 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ void					take_fork(t_philo *philo);
 int						rest_and_mutexes_init(t_data *data);
 int						init_philo(t_data *data);
 t_data					*init_data(int ac, char **av);
-void					write_status(t_data *data, const char *message);
+void					write_status(t_data *data, t_philo *philo,
+							const char *message);
 time_t					get_time_ms(void);
 void					start_delay(long start_time);
 void					philo_sleep(t_data *data, long time_in_ms);

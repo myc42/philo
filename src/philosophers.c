@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:12:47 by macoulib          #+#    #+#             */
-/*   Updated: 2025/09/04 14:26:19 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/09/04 15:58:17 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,12 @@ void	*one_philo(t_philo *philo)
 	t_data	*data;
 
 	data = philo->shared_data;
-
-	
 	pthread_mutex_lock(&data->fork_mutexes[philo->fork[0]]);
-	write_status(data, "has taken a fork");
-
+	write_status(data,philo, "has taken a fork");
 	philo_sleep(data, data->time_to_die);
-
 	pthread_mutex_unlock(&data->fork_mutexes[philo->fork[0]]);
 	return (NULL);
 }
-
 
 void	*philo_routine(void *arg)
 {
@@ -44,10 +39,10 @@ void	*philo_routine(void *arg)
 	while (!simulation_stopped(data))
 	{
 		pthread_mutex_lock(&data->fork_mutexes[philo->fork[0]]);
-		write_status(data, "has taken a fork");
+		write_status(data, philo, "has taken a fork");
 		pthread_mutex_lock(&data->fork_mutexes[philo->fork[1]]);
-		write_status(data, "has taken a fork2");
-		write_status(data, "is eating");
+		write_status(data, philo, "has taken a fork2");
+		write_status(data, philo, "is eating");
 		pthread_mutex_lock(&philo->meal_time_lock);
 		philo->last_meal_time = get_time_ms();
 		philo->meals_eaten++;
@@ -55,9 +50,9 @@ void	*philo_routine(void *arg)
 		philo_sleep(data, data->time_to_eat);
 		pthread_mutex_unlock(&data->fork_mutexes[philo->fork[0]]);
 		pthread_mutex_unlock(&data->fork_mutexes[philo->fork[1]]);
-		write_status(data, "is sleeping");
+		write_status(data, philo, "is sleeping");
 		philo_sleep(data, data->time_to_sleep);
-		write_status(data, "is thinking");
+		write_status(data, philo, "is thinking");
 		philo_sleep(data, 50);
 	}
 	return (NULL);
