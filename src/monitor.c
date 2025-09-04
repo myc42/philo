@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 17:00:49 by macoulib          #+#    #+#             */
-/*   Updated: 2025/09/04 14:28:09 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/09/04 17:12:35 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ void	*monitor_routine(void *arg)
 				pthread_mutex_lock(&data->death_mutex);
 				data->philosopher_died = 1;
 				pthread_mutex_unlock(&data->death_mutex);
-				write_status(data, "died");
+				pthread_mutex_lock(&data->print_mutex);
+				printf("%ld %d has died\n", get_time_ms() - data->simulation_start_time, i);
+				pthread_mutex_unlock(&data->print_mutex);
 				return (NULL);
 			}
 			if (data->required_meals > 0
