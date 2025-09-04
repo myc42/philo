@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 17:00:49 by macoulib          #+#    #+#             */
-/*   Updated: 2025/09/04 17:12:35 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/09/04 20:24:17 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,6 @@ void	*monitor_routine(void *arg)
 			pthread_mutex_unlock(&data->death_mutex);
 			return (NULL);
 		}
-		usleep(1000);
+		usleep(200);
 	}
 }
