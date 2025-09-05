@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:12:47 by macoulib          #+#    #+#             */
-/*   Updated: 2025/09/04 21:55:33 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/09/05 17:44:00 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	*philo_routine(void *arg)
 	if (data->total_philosophers == 1)
 		return (one_philo(philo));
 	if (philo->id % 2 == 0)
-		philo_sleep(data, 1);
+		think_rt(data->philosophers,true);
 	while (!simulation_stopped(data))
 	{
 		pthread_mutex_lock(&data->fork_mutexes[philo->fork[0]]);
@@ -53,7 +53,7 @@ void	*philo_routine(void *arg)
 		write_status(data, philo, "is sleeping");
 		philo_sleep(data, data->time_to_sleep);
 		write_status(data, philo, "is thinking");
-		philo_sleep(data, 100);
+		think_rt(data->philosophers,false);
 	}
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 15:05:06 by macoulib          #+#    #+#             */
-/*   Updated: 2025/09/04 21:42:32 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/09/05 17:26:53 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ time_t	get_time_ms(void)
 void	start_delay(long start_time)
 {
 	while (get_time_ms() > start_time )
-		usleep(100);
+		usleep(200);
 }
 
 void	write_status(t_data *data, t_philo *philo, const char *message)

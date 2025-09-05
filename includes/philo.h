@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:12:32 by macoulib          #+#    #+#             */
-/*   Updated: 2025/09/04 15:56:57 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/09/05 17:42:26 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_data
 	int time_to_die;               // Temps maximal sans manger avant de mourir
 	int time_to_eat;               // Durée de l'action manger
 	int time_to_sleep;             // Durée de l'action dormir
+	int time_to_think;             // Durée de l'action dormir
 	int required_meals;            // Nbr de repas requis pour chaque philosophe
 	int philosopher_died;          // Indique si un philosophe est mort (bool)
 	int all_met_requirements;      // ls philosophes ont atteint le nbr de repas
@@ -69,5 +70,6 @@ int						simulation_stopped(t_data *data);
 void					*monitor_routine(void *x);
 int						correct_argv(int ac, char **av);
 int						ft_atoi(char *str);
+void					think_rt(t_philo *philo, bool silent);
 
 #endif
