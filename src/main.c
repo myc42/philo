@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:12:41 by macoulib          #+#    #+#             */
-/*   Updated: 2025/09/04 21:20:11 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/09/05 18:38:18 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int	main(int ac, char **av)
 	if (ac != 5 && ac != 6)
 		return (printf("Usage: ./philo nb_philo t_die t_eat t_sleep [must_eat]\n"),
 			1);
-
 	data = init_data(ac, av);
 	if (!data)
 		return (1);

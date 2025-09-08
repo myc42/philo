@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_error.c                                      :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:12:35 by macoulib          #+#    #+#             */
-/*   Updated: 2025/09/03 17:59:14 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/09/05 18:09:45 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
-int	correct_argv(int ac, char **av)
+int	valid_argv(int ac, char **av)
 {
 	int	i;
 	int	j;
@@ -48,16 +48,16 @@ int	correct_argv(int ac, char **av)
 		while (j < ac)
 		{
 			if (!ft_isdigit(av[i][j]))
-				return (0);
+				return (1);
 			j++;
 		}
 		if (ft_atoi(av[i]) < 0)
-			return (0);
+			return (1);
 		i++;
 	}
-	if (ft_atoi(av[1]) > 255)
-		return (0);
-	return (1);
+	if (ft_atoi(av[1]) > 200)
+		return (2);
+	return (0);
 }
 
 int	simulation_stopped(t_data *data)
