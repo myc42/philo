@@ -6,7 +6,7 @@
 #    By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/28 13:12:22 by macoulib          #+#    #+#              #
-#    Updated: 2025/09/04 13:24:37 by macoulib         ###   ########.fr        #
+#    Updated: 2025/09/08 18:52:25 by macoulib         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ OBJ_PATH = objects/
 
 SRC		=	main.c \
 			timer_and_write_function.c \
-			check_error.c \
+			parsing.c \
 			init.c \
 			monitor.c \
 			philo_routine.c \
