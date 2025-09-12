@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:12:38 by macoulib          #+#    #+#             */
-/*   Updated: 2025/09/09 20:11:52 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/09/10 16:25:22 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	rest_and_mutexes_init(t_data *data)
 
 	data->philosopher_died = 0;
 	data->simulation_start_time = get_time_ms();
+	data->all_met_requirements = 0;
+	data->time_to_think = 0;
 	if (pthread_mutex_init(&data->print_mutex, NULL) != 0)
 		return (0);
 	if (pthread_mutex_init(&data->death_mutex, NULL) != 0)
@@ -64,7 +66,8 @@ int	init_philo(t_data *data)
 		data->philosophers[i].meals_eaten = 0;
 		data->philosophers[i].last_meal_time = data->simulation_start_time;
 		data->philosophers[i].shared_data = data;
-		if(pthread_mutex_init(&data->philosophers[i].meal_time_lock, NULL) != 0)
+		if (pthread_mutex_init(&data->philosophers[i].meal_time_lock,
+				NULL) != 0)
 			return (0);
 		take_fork(&data->philosophers[i]);
 		i++;

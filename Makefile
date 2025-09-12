@@ -6,13 +6,13 @@
 #    By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/28 13:12:22 by macoulib          #+#    #+#              #
-#    Updated: 2025/09/08 18:52:25 by macoulib         ###   ########.fr        #
+#    Updated: 2025/09/11 15:41:25 by macoulib         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= philo
 CC		= gcc
-CFLAGS	= -Werror -Wall -Wextra -pthread
+CFLAGS	= -Werror -Wall -Wextra -pthread -ggdb
 
 
 

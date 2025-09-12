@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/01 15:05:06 by macoulib          #+#    #+#             */
-/*   Updated: 2025/09/05 17:26:53 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/09/10 16:39:04 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ time_t	get_time_ms(void)
 
 void	start_delay(long start_time)
 {
-	while (get_time_ms() > start_time )
+	while (get_time_ms() < start_time)
 		usleep(200);
 }
 
@@ -33,6 +33,7 @@ void	write_status(t_data *data, t_philo *philo, const char *message)
 		return (pthread_mutex_unlock(&data->death_mutex), (void)0);
 	pthread_mutex_unlock(&data->death_mutex);
 	pthread_mutex_lock(&data->print_mutex);
-	printf("%ld %d %s\n", get_time_ms() - data->simulation_start_time, philo->id, message);
+	printf("%ld %d %s\n", get_time_ms() - data->simulation_start_time,
+		philo->id, message);
 	pthread_mutex_unlock(&data->print_mutex);
 }

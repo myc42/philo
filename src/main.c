@@ -6,13 +6,13 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/28 13:12:41 by macoulib          #+#    #+#             */
-/*   Updated: 2025/09/09 20:11:39 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/09/10 16:34:32 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	cleanall(t_data *data)
+void	clean_all(t_data *data)
 {
 	int	i;
 
@@ -32,7 +32,7 @@ void	cleanall(t_data *data)
 int	create_thread(t_data *data)
 
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < data->total_philosophers)
@@ -56,17 +56,23 @@ int	create_thread(t_data *data)
 
 int	main(int ac, char **av)
 {
-	t_data *data;
-	data = NULL;
+	t_data	*data;
 
+	data = NULL;
 	if (ac != 5 && ac != 6)
-		return (printf("Usage: ./philo nb_philo t_die t_eat t_sleep [must_eat]\n"),
+		return (printf("Usage: ./philo nb_philo t_diet_eatt_sleep-[must_eat]\n"),
 			1);
+	if (valid_argv(ac, av) == 1)
+	{
+		printf("Error :arguments invalides\n"
+			"(uniquement des chiffres, > 1, et philo <= 200)\n");
+		return (1);
+	}
 	data = init_data(ac, av);
 	if (!data)
 		return (1);
 	if (create_thread(data) != 0)
-		return (cleanall(data), 1);
-	cleanall(data);
+		return (clean_all(data), 1);
+	clean_all(data);
 	return (0);
 }
